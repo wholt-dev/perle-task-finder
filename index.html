@@ -16,39 +16,19 @@
     --card: #16161f;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Syne', sans-serif;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
+  body { background: var(--bg); color: var(--text); font-family: 'Syne', sans-serif; min-height: 100vh; overflow-x: hidden; }
   body::before {
     content: '';
     position: fixed;
     inset: 0;
-    background-image:
-      linear-gradient(rgba(0,255,136,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,255,136,0.03) 1px, transparent 1px);
+    background-image: linear-gradient(rgba(0,255,136,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,136,0.03) 1px, transparent 1px);
     background-size: 40px 40px;
     pointer-events: none;
     z-index: 0;
   }
   .container { max-width: 860px; margin: 0 auto; padding: 48px 24px; position: relative; z-index: 1; }
   header { text-align: center; margin-bottom: 44px; animation: fadeDown 0.6s ease both; }
-  .badge {
-    display: inline-block;
-    background: rgba(0,255,136,0.1);
-    border: 1px solid rgba(0,255,136,0.3);
-    color: var(--accent);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    padding: 4px 14px;
-    border-radius: 2px;
-    letter-spacing: 2px;
-    margin-bottom: 18px;
-    text-transform: uppercase;
-  }
+  .badge { display: inline-block; background: rgba(0,255,136,0.1); border: 1px solid rgba(0,255,136,0.3); color: var(--accent); font-family: 'JetBrains Mono', monospace; font-size: 11px; padding: 4px 14px; border-radius: 2px; letter-spacing: 2px; margin-bottom: 18px; text-transform: uppercase; }
   h1 { font-size: clamp(28px, 5vw, 46px); font-weight: 800; line-height: 1.1; letter-spacing: -1px; margin-bottom: 10px; }
   h1 span { color: var(--accent); }
   .subtitle { color: var(--muted); font-size: 13px; font-family: 'JetBrains Mono', monospace; }
@@ -56,33 +36,10 @@
   .stat { background: var(--card); border: 1px solid var(--border); border-radius: 6px; padding: 12px 16px; flex: 1; text-align: center; }
   .stat-num { font-size: 22px; font-weight: 800; color: var(--accent); display: block; }
   .stat-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
-  .search-area {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 22px;
-    margin-bottom: 18px;
-    animation: fadeUp 0.6s 0.15s ease both;
-    position: relative;
-    overflow: hidden;
-  }
+  .search-area { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 22px; margin-bottom: 18px; animation: fadeUp 0.6s 0.15s ease both; position: relative; overflow: hidden; }
   .search-area::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), transparent); }
   .search-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; display: block; }
-  textarea {
-    width: 100%;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    color: var(--text);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 13px;
-    line-height: 1.6;
-    padding: 14px;
-    resize: vertical;
-    min-height: 110px;
-    outline: none;
-    transition: border-color 0.2s;
-  }
+  textarea { width: 100%; background: var(--bg); border: 1px solid var(--border); border-radius: 4px; color: var(--text); font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 1.6; padding: 14px; resize: vertical; min-height: 110px; outline: none; transition: border-color 0.2s; }
   textarea:focus { border-color: rgba(0,255,136,0.4); }
   textarea::placeholder { color: var(--muted); font-size: 12px; }
   .btn-row { display: flex; gap: 10px; margin-top: 12px; }
@@ -122,13 +79,11 @@
     <h1>Perle Task<br><span>Answer Finder</span></h1>
     <p class="subtitle">// paste full note, few words, or anything → instant answer</p>
   </header>
-
   <div class="stats-bar">
-    <div class="stat"><span class="stat-num" id="totalCount">34</span><span class="stat-label">Questions</span></div>
+    <div class="stat"><span class="stat-num" id="totalCount">0</span><span class="stat-label">Questions</span></div>
     <div class="stat"><span class="stat-num" id="searchCount">0</span><span class="stat-label">Searches</span></div>
     <div class="stat"><span class="stat-num" id="copyCount">0</span><span class="stat-label">Copied</span></div>
   </div>
-
   <div class="search-area">
     <span class="search-label">// Paste Question — Full Note, Partial, or Just Keywords</span>
     <textarea id="questionInput" placeholder="Examples:&#10;• '81-year-old female CT Head left weakness'&#10;• 'motorcycle accident splenic laceration'&#10;• Paste the full clinical note&#10;&#10;Ctrl+Enter to search"></textarea>
@@ -137,7 +92,6 @@
       <button class="btn-clear" onclick="clearAll()">✕ Clear</button>
     </div>
   </div>
-
   <div class="result-box" id="resultBox">
     <div class="result-card">
       <div class="result-header">
@@ -150,51 +104,239 @@
       </div>
     </div>
   </div>
-
   <div class="no-result" id="noResult">
     <div class="no-result-icon">🔎</div>
     <h3>No Match Found</h3>
     <p>Try different keywords or paste more of the question</p>
   </div>
 </div>
-
 <script>
 const qaDatabase = [
-  { keywords: ["56-year-old female","hepatitis c","genotype 1a","f3 fibrosis","sofosbuvir","velpatasvir","epclusa","hcv rna","hepatitis b monitoring","hbsag","hepatitis b surface antigen"], answer: "No need for hepatitis B monitoring during treatment" },
-  { keywords: ["40-year-old male","worst headache of his life","neck stiffness","photophobia","kernig","subarachnoid","thunderclap","worst headache","subarachnoid hemorrhage ruled out"], answer: "Subarachnoid hemorrhage ruled out by negative CT" },
-  { keywords: ["83-year-old male","dementia","mmse","copd","agitation","combativeness","nursing facility","haloperidol","behavioral management"], answer: "haloperidol 2mg BID standing" },
-  { keywords: ["63-year-old male","atrial fibrillation","rivaroxaban","carbamazepine","trigeminal neuralgia","cha2ds2","inr 1.8","therapeutic anticoagulation on rivaroxaban"], answer: "INR today: 1.8. Assessment: Therapeutic anticoagulation on rivaroxaban" },
-  { keywords: ["8-month-old","8.5kg","tms erythematous","otitis media bilateral","amoxicillin 400mg","45mg/kg","fontanelle","irritable","decreased oral intake"], answer: "Amoxicillin 400mg (45mg/kg/day divided BID)" },
-  { keywords: ["72-year-old female","knee arthroplasty","total knee","enoxaparin","spo2 42","dvt prophylaxis","walker","oxycodone","arthroplasty"], answer: "SpO2 42% on room air" },
-  { keywords: ["laparoscopic cholecystectomy","cholelithiasis","biliary colic","cystic duct","cystic artery","gallbladder","appendix was visualized","umbilical port"], answer: "The appendix was visualized and appeared normal" },
-  { keywords: ["right knee arthroscopy","partial medial meniscectomy","lateral meniscus","posterior horn","tourniquet","anterolateral","anteromedial portals","acl pcl"], answer: "complex tear of the lateral meniscus posterior horn" },
-  { keywords: ["atrial fibrillation newly diagnosed","cha2ds2-vasc score 4","apixaban 50mg","recheck inr","rate control evaluation","nsaids"], answer: "apixaban 50mg BID" },
-  { keywords: ["22-year-old male","skateboard","outstretched","anatomical snuffbox","wrist sprain","scaphoid","no immobilization","rice protocol","dorsal wrist"], answer: "Wrist sprain. Plan: RICE protocol (rest, ice, compression, elevation). Ibuprofen 400mg TID PRN. Return for re-evaluation only if symptoms worsen. No immobilization needed." },
-  { keywords: ["81-year-old female","ct head","left-sided weakness","slurred speech","hemispheric stroke","left hemispheric","diffusion-weighted","periventricular","ischemic changes"], answer: "acute left hemispheric stroke" },
-  { keywords: ["7-year-old male","sore throat","strep","rapid strep","asthma","albuterol","tonsillar exudates","amoxicillin 500mg tid","refusal to eat"], answer: "Amoxicillin 500mg TID for 10 days" },
-  { keywords: ["45-year-old female","appendectomy","uncomplicated appendicitis","without perforation","ciprofloxacin","metronidazole","laparoscopic appendectomy"], answer: "ciprofloxacin 500mg BID and metronidazole 500mg TID for 7 days" },
-  { keywords: ["30-year-old male","tonic-clonic seizure","post-ictal","glucose 24","fingerstick","hypoglycemia","levetiracetam","d50w","seizure prophylaxis"], answer: "Start levetiracetam 500mg IV for seizure prophylaxis" },
-  { keywords: ["62-year-old female","crushing substernal","chest pain left arm","st elevations","leads ii iii avf","anterior stemi","troponin","amlodipine","atorvastatin","metformin"], answer: "Acute anterior STEMI" },
-  { keywords: ["34-year-old male","motorcycle accident","ems","splenic laceration","active extravasation","fast exam","splenorenal","non-operative","grade iii splenic","hemoglobin 7.2"], answer: "admit to surgical ICU for observation and non-operative management" },
-  { keywords: ["58-year-old male","type 2 diabetes","a1c 7.8","hypertension at goal","bp 148/92","glimepiride","lisinopril","ldl 118","annual wellness"], answer: "Hypertension at goal" },
-  { keywords: ["50-year-old male","gout","allopurinol 300mg","well-controlled gout","discontinue allopurinol"], answer: "Discontinue allopurinol immediately as most likely culprit" },
-  { keywords: ["fatigue","weight gain","cold intolerance","tsh 0.08","free t4 0.6","hypothyroidism","suppressed tsh","levothyroxine","thyroid panel"], answer: "Primary hypothyroidism, consistent with lab findings showing suppressed TSH and low free T4" },
-  { keywords: ["cesarean delivery","14.2 pounds","cesarean","c-section"], answer: "14.2 pounds" },
-  { keywords: ["community-acquired pneumonia","amoxicillin-clavulanate","875mg","pneumonia","iv amoxicillin-clavulanate"], answer: "IV amoxicillin-clavulanate 875mg q12h" },
-  { keywords: ["38-year-old female","g2p1","32 weeks","gestation","gestational hypertension","bp 152/96","2+ protein","prenatal visit","preeclampsia"], answer: "Gestational hypertension" },
-  { keywords: ["71-year-old female","osteoporosis","t-score -2.8","lumbar spine","alendronate","dexa","bone density"], answer: "Continue alendronate" },
-  { keywords: ["55-year-old male","gout","follow-up","uric acid","cbc","recheck uric acid","6 weeks"], answer: "Recheck uric acid and CBC in 6 weeks" },
-  { keywords: ["54-year-old female","anterior cervical","discectomy","fusion","c5-c6","cervical radiculopathy","lumbar spine precautions","cervical collar"], answer: "Lumbar spine precautions reviewed" },
-  { keywords: ["48-year-old female","rheumatoid arthritis","labs within acceptable limits"], answer: "Labs within acceptable limits" },
-  { keywords: ["right inguinal hernia","inguinal hernia repair","left inguinal canal","oblique incision","mesh","hernia sac"], answer: "left inguinal canal" },
-  { keywords: ["60-year-old male","pancreatitis","gallstones","acute pancreatitis","alcohol","resume normal diet","alcohol in moderation"], answer: "resume normal diet including alcohol in moderation once feeling better" },
-  { keywords: ["colonoscopy","screening colonoscopy","50-year-old male","family history colon cancer","12mm sessile polyp","ascending colon","sigmoid colon","repeat colonoscopy 10 years"], answer: "Recommend repeat colonoscopy in 10 years per guidelines" },
-  { keywords: ["25-year-old female","4 days of progressive","admit to floor"], answer: "Admit to floor" },
-  { keywords: ["45-year-old female","right flank pain","radiating to the groin","trimethoprim","sulfamethoxazole","kidney stone","flank pain groin"], answer: "trimethoprim-sulfamethoxazole DS BID" },
-  { keywords: ["73-year-old male","parkinson","benign prostatic","bph","urinary retention","foley catheter","tamsulosin","oxybutynin","carbidopa","levodopa"], answer: "oxybutynin 5mg BID" },
-  { keywords: ["52-year-old female","lupus","hydroxychloroquine","prednisone","dyspnea","pleuritic chest pain","pleural effusions","d-dimer 3200","lupus pleuritis","daily chest x-rays"], answer: "Monitor with daily chest X-rays" },
-  { keywords: ["35-year-old female","postpartum","breastfeeding","right calf","popliteal vein","dvt","warfarin 5mg","enoxaparin bridge","6 weeks postpartum"], answer: "Start warfarin 5mg daily" }
+  {
+    keywords: ["56-year-old female","hepatitis c","genotype 1a","f3 fibrosis","sofosbuvir","velpatasvir","epclusa","hcv rna","hepatitis b monitoring","hbsag","hepatitis b surface antigen"],
+    answer: "No need for hepatitis B monitoring during treatment"
+  },
+  {
+    keywords: ["40-year-old male","worst headache of his life","neck stiffness","photophobia","kernig","subarachnoid","thunderclap","worst headache","subarachnoid hemorrhage ruled out","sudden-onset worst headache"],
+    answer: "Subarachnoid hemorrhage ruled out by negative CT"
+  },
+  {
+    keywords: ["83-year-old male","dementia","mmse","copd","agitation","combativeness","nursing facility","haloperidol","behavioral management"],
+    answer: "haloperidol 2mg BID standing"
+  },
+  {
+    keywords: ["63-year-old male","atrial fibrillation","rivaroxaban","carbamazepine","trigeminal neuralgia","cha2ds2","inr 1.8","therapeutic anticoagulation on rivaroxaban"],
+    answer: "INR today: 1.8. Assessment: Therapeutic anticoagulation on rivaroxaban"
+  },
+  {
+    keywords: ["8-month-old","8.5kg","tms erythematous","otitis media bilateral","amoxicillin 400mg","45mg/kg","fontanelle","irritable","decreased oral intake","8 month old fever"],
+    answer: "Amoxicillin 400mg (45mg/kg/day divided BID)"
+  },
+  {
+    keywords: ["72-year-old female","knee arthroplasty","total knee","enoxaparin","spo2 42","dvt prophylaxis","walker","oxycodone","arthroplasty","72-year-old patient"],
+    answer: "SpO2 42% on room air"
+  },
+  {
+    keywords: ["laparoscopic cholecystectomy","cholelithiasis","biliary colic","cystic duct","cystic artery","gallbladder","appendix was visualized","umbilical port","operative note laparoscopic"],
+    answer: "The appendix was visualized and appeared normal"
+  },
+  {
+    keywords: ["right knee arthroscopy","partial medial meniscectomy","lateral meniscus","posterior horn","tourniquet","anterolateral","anteromedial portals","acl pcl","operative note right knee"],
+    answer: "complex tear of the lateral meniscus posterior horn"
+  },
+  {
+    keywords: ["atrial fibrillation newly diagnosed","cha2ds2-vasc score 4","apixaban 50mg","recheck inr","rate control evaluation","nsaids","assessment atrial fibrillation","apixaban 5mg bid"],
+    answer: "apixaban 50mg BID"
+  },
+  {
+    keywords: ["22-year-old male","skateboard","outstretched","anatomical snuffbox","wrist sprain","scaphoid","no immobilization","rice protocol","dorsal wrist","22-year-old male presents"],
+    answer: "Wrist sprain. Plan: RICE protocol (rest, ice, compression, elevation). Ibuprofen 400mg TID PRN. Return for re-evaluation only if symptoms worsen. No immobilization needed."
+  },
+  {
+    keywords: ["81-year-old female","ct head","left-sided weakness","slurred speech","hemispheric stroke","left hemispheric","diffusion-weighted","periventricular","ischemic changes","radiology report ct head"],
+    answer: "acute left hemispheric stroke"
+  },
+  {
+    keywords: ["7-year-old male","sore throat","strep","rapid strep","asthma","albuterol","tonsillar exudates","amoxicillin 500mg tid","refusal to eat","admission note 7-year-old"],
+    answer: "Amoxicillin 500mg TID for 10 days"
+  },
+  {
+    keywords: ["45-year-old female","appendectomy","uncomplicated appendicitis","without perforation","ciprofloxacin","metronidazole","laparoscopic appendectomy","discharge summary 45-year-old female"],
+    answer: "ciprofloxacin 500mg BID and metronidazole 500mg TID for 7 days"
+  },
+  {
+    keywords: ["30-year-old male","tonic-clonic seizure","post-ictal","glucose 24","fingerstick","hypoglycemia","levetiracetam","d50w","seizure prophylaxis","30-year-old witnessed seizure"],
+    answer: "Start levetiracetam 500mg IV for seizure prophylaxis"
+  },
+  {
+    keywords: ["62-year-old female","crushing substernal","chest pain left arm","st elevations","leads ii iii avf","anterior stemi","troponin","amlodipine","atorvastatin","metformin","62-year-old chest pain"],
+    answer: "Acute anterior STEMI"
+  },
+  {
+    keywords: ["34-year-old male","motorcycle accident","ems","splenic laceration","active extravasation","fast exam","splenorenal","non-operative","grade iii splenic","hemoglobin 7.2","34-year-old motorcycle"],
+    answer: "admit to surgical ICU for observation and non-operative management"
+  },
+  {
+    keywords: ["58-year-old male","type 2 diabetes","a1c 7.8","hypertension at goal","bp 148/92","glimepiride","lisinopril","ldl 118","annual wellness","a1c 7.6","progress note 58-year-old"],
+    answer: "Hypertension at goal"
+  },
+  {
+    keywords: ["50-year-old male","gout","allopurinol 300mg","well-controlled gout","discontinue allopurinol","progress note 50-year-old"],
+    answer: "Discontinue allopurinol immediately as most likely culprit"
+  },
+  {
+    keywords: ["fatigue","weight gain","cold intolerance","tsh 0.08","free t4 0.6","hypothyroidism","suppressed tsh","levothyroxine","thyroid panel","patient presents with fatigue"],
+    answer: "Primary hypothyroidism, consistent with lab findings showing suppressed TSH and low free T4"
+  },
+  {
+    keywords: ["cesarean delivery","14.2 pounds","cesarean","c-section","operative note cesarean"],
+    answer: "14.2 pounds"
+  },
+  {
+    keywords: ["community-acquired pneumonia","amoxicillin-clavulanate","875mg","pneumonia","iv amoxicillin-clavulanate","58-year-old patient pneumonia","56-year-old male pneumonia"],
+    answer: "IV amoxicillin-clavulanate 875mg q12h"
+  },
+  {
+    keywords: ["38-year-old female","g2p1","32 weeks","gestation","gestational hypertension","bp 152/96","2+ protein","prenatal visit","preeclampsia","36-year-old female g2p1"],
+    answer: "Gestational hypertension"
+  },
+  {
+    keywords: ["71-year-old female","osteoporosis","t-score -2.8","lumbar spine","alendronate","dexa","bone density","continue alendronate"],
+    answer: "Continue alendronate"
+  },
+  {
+    keywords: ["55-year-old male","gout","follow-up","uric acid","cbc","recheck uric acid","6 weeks","progress note 55-year-old"],
+    answer: "Recheck uric acid and CBC in 6 weeks"
+  },
+  {
+    keywords: ["54-year-old female","anterior cervical","discectomy","fusion","c5-c6","cervical radiculopathy","lumbar spine precautions","cervical collar","elective anterior","discharge summary 54-year-old"],
+    answer: "Lumbar spine precautions reviewed"
+  },
+  {
+    keywords: ["48-year-old female","rheumatoid arthritis","labs within acceptable limits","46-year-old female rheumatoid","progress note 48-year-old"],
+    answer: "Labs within acceptable limits"
+  },
+  {
+    keywords: ["right inguinal hernia","inguinal hernia repair","left inguinal canal","oblique incision","mesh","hernia sac","operative note right inguinal"],
+    answer: "left inguinal canal"
+  },
+  {
+    keywords: ["60-year-old male","pancreatitis","gallstones","acute pancreatitis","alcohol","resume normal diet","alcohol in moderation","discharge summary 60-year-old"],
+    answer: "resume normal diet including alcohol in moderation once feeling better"
+  },
+  {
+    keywords: ["colonoscopy","screening colonoscopy","50-year-old male","family history colon cancer","12mm sessile polyp","ascending colon","sigmoid colon","repeat colonoscopy 10 years","operative note colonoscopy"],
+    answer: "Recommend repeat colonoscopy in 10 years per guidelines"
+  },
+  {
+    keywords: ["25-year-old female","4 days of progressive","admit to floor","admission note 25-year-old"],
+    answer: "Admit to floor"
+  },
+  {
+    keywords: ["45-year-old female","right flank pain","radiating to the groin","trimethoprim","sulfamethoxazole","kidney stone","flank pain groin","admission note 45-year-old female flank"],
+    answer: "trimethoprim-sulfamethoxazole DS BID"
+  },
+  {
+    keywords: ["73-year-old male","parkinson","benign prostatic","bph","urinary retention","foley catheter","tamsulosin","oxybutynin","carbidopa","levodopa"],
+    answer: "oxybutynin 5mg BID"
+  },
+  {
+    keywords: ["52-year-old female","lupus","hydroxychloroquine","prednisone","dyspnea","pleuritic chest pain","pleural effusions","d-dimer 3200","lupus pleuritis","daily chest x-rays"],
+    answer: "Monitor with daily chest X-rays"
+  },
+  {
+    keywords: ["35-year-old female","postpartum","breastfeeding","right calf","popliteal vein","dvt","warfarin 5mg","enoxaparin bridge","6 weeks postpartum"],
+    answer: "Start warfarin 5mg daily"
+  },
+  {
+    keywords: ["78-year-old female","alzheimer","warfarin","enoxaparin 1mg","urinary incontinence","confusion","uti","leukocyte esterase","atrial fibrillation warfarin","bridge with enoxaparin"],
+    answer: "Hold warfarin and bridge with enoxaparin 1mg/kg BID"
+  },
+  {
+    keywords: ["42-year-old male","community-acquired pneumonia outpatient","levofloxacin 750mg","no comorbidities","no recent antibiotic","healthy pneumonia","prescription note 42-year-old"],
+    answer: "Levofloxacin 750mg daily for 5 days"
+  },
+  {
+    keywords: ["68-year-old male","metformin 1000mg","discharge summary 68-year-old"],
+    answer: "metformin 1000mg BID"
+  },
+  {
+    keywords: ["70-year-old male","left hip","progress note 70-year-old"],
+    answer: "left hip"
+  },
+  {
+    keywords: ["operative note procedure left","right sternocleidomastoid","sternocleidomastoid muscle","left procedure right stern"],
+    answer: "right sternocleidomastoid muscle"
+  },
+  {
+    keywords: ["44-year-old male","renal function","mildly decreased","age-related","creatinine","progress note 44-year-old"],
+    answer: "Renal function mildly decreased, likely age-related"
+  },
+  {
+    keywords: ["54-year-old female","elective lumbar","lumbar procedure reviewed","discharge summary elective lumbar"],
+    answer: "Lumbar spine procedure reviewed"
+  },
+  { keywords: ["22-year-old","wrist sprain","rice protocol","ibuprofen 400mg tid","no immobilization needed","emergency department note 22"], answer: "Wrist sprain. Plan: RICE protocol (rest, ice, compression, elevation). Ibuprofen 400mg TID PRN. Return for re-evaluation only if symptoms worsen. No immobilization needed." },
+  { keywords: ["25-year-old female","4 days progressive","admit floor","admission 25"], answer: "Admit to floor" },
+  { keywords: ["30-year-old","tonic-clonic","post-ictal","levetiracetam 500mg","seizure prophylaxis","fingerstick glucose 24"], answer: "Start levetiracetam 500mg IV for seizure prophylaxis" },
+  { keywords: ["34-year-old","motorcycle","splenic laceration","active extravasation","non-operative","fast exam splenorenal"], answer: "admit to surgical ICU for observation and non-operative management" },
+  { keywords: ["35-year-old","postpartum","breastfeeding","popliteal vein","dvt","warfarin 5mg","right calf swelling"], answer: "Start warfarin 5mg daily" },
+  { keywords: ["40-year-old","worst headache","kernig","subarachnoid hemorrhage ruled out","negative ct","neck stiffness photophobia"], answer: "Subarachnoid hemorrhage ruled out by negative CT" },
+  { keywords: ["42-year-old male","community-acquired pneumonia outpatient","levofloxacin 750mg","healthy no comorbidities","prescription note 42"], answer: "Levofloxacin 750mg daily for 5 days" },
+  { keywords: ["45-year-old female flank","right flank pain groin","trimethoprim-sulfamethoxazole","sulfamethoxazole ds bid"], answer: "trimethoprim-sulfamethoxazole DS BID" },
+  { keywords: ["45-year-old female appendectomy","uncomplicated appendicitis ciprofloxacin","metronidazole discharge appendectomy"], answer: "ciprofloxacin 500mg BID and metronidazole 500mg TID for 7 days" },
+  { keywords: ["48-year-old female rheumatoid","labs within acceptable progress 48"], answer: "Labs within acceptable limits" },
+  { keywords: ["colonoscopy screening family history","sessile polyp repeat colonoscopy 10 years"], answer: "Recommend repeat colonoscopy in 10 years per guidelines" },
+  { keywords: ["52-year-old female lupus","hydroxychloroquine pleural effusions","lupus pleuritis daily chest x-rays"], answer: "Monitor with daily chest X-rays" },
+  { keywords: ["54-year-old female cervical discectomy","c5-c6 lumbar spine precautions reviewed","cervical collar fusion anterior"], answer: "Lumbar spine precautions reviewed" },
+  { keywords: ["55-year-old male gout follow-up","uric acid cbc 6 weeks gout"], answer: "Recheck uric acid and CBC in 6 weeks" },
+  { keywords: ["56-year-old female hepatitis c epclusa","sofosbuvir velpatasvir hepatitis b monitoring"], answer: "No need for hepatitis B monitoring during treatment" },
+  { keywords: ["60-year-old male pancreatitis gallstones","alcohol moderation resume normal diet"], answer: "resume normal diet including alcohol in moderation once feeling better" },
+  { keywords: ["62-year-old female substernal st elevations","leads ii iii avf acute anterior stemi troponin"], answer: "Acute anterior STEMI" },
+  { keywords: ["63-year-old male rivaroxaban carbamazepine","inr 1.8 therapeutic anticoagulation rivaroxaban"], answer: "INR today: 1.8. Assessment: Therapeutic anticoagulation on rivaroxaban" },
+  { keywords: ["68-year-old male metformin 1000mg","discharge 68 metformin bid"], answer: "metformin 1000mg BID" },
+  { keywords: ["70-year-old male left hip","hip 70-year-old progress note"], answer: "left hip" },
+  { keywords: ["71-year-old female osteoporosis alendronate","t-score -2.8 continue alendronate"], answer: "Continue alendronate" },
+  { keywords: ["72-year-old knee arthroplasty spo2 42","room air enoxaparin dvt discharge knee"], answer: "SpO2 42% on room air" },
+  { keywords: ["73-year-old male parkinson bph","urinary retention oxybutynin tamsulosin foley"], answer: "oxybutynin 5mg BID" },
+  { keywords: ["radiology ct head 81-year-old","left hemispheric stroke diffusion weighted","left sided weakness slurred speech"], answer: "acute left hemispheric stroke" },
+  { keywords: ["operative right inguinal hernia","left inguinal canal mesh oblique"], answer: "left inguinal canal" },
+  { keywords: ["patient presents fatigue weight gain","cold intolerance tsh suppressed free t4 low"], answer: "Primary hypothyroidism, consistent with lab findings showing suppressed TSH and low free T4" },
+  { keywords: ["operative cesarean delivery","14.2 pounds birth weight cesarean"], answer: "14.2 pounds" },
+  { keywords: ["operative laparoscopic cholecystectomy","appendix visualized appeared normal cystic duct"], answer: "The appendix was visualized and appeared normal" },
+  { keywords: ["operative right knee medial meniscectomy","lateral meniscus posterior horn complex acl pcl"], answer: "complex tear of the lateral meniscus posterior horn" },
+  { keywords: ["assessment atrial fibrillation cha2ds2 apixaban","50mg bid recheck inr anticoagulation"], answer: "apixaban 50mg BID" },
+  { keywords: ["operative left sternocleidomastoid","right sternocleidomastoid muscle left procedure"], answer: "right sternocleidomastoid muscle" },
+  { keywords: ["admission 7-year-old sore throat strep","asthma albuterol amoxicillin 500mg tid"], answer: "Amoxicillin 500mg TID for 10 days" },
+  { keywords: ["admission 58-year-old pneumonia","amoxicillin-clavulanate 875mg q12h iv"], answer: "IV amoxicillin-clavulanate 875mg q12h" },
+  { keywords: ["admission 83-year-old dementia agitation","nursing facility haloperidol 2mg bid standing"], answer: "haloperidol 2mg BID standing" },
+  { keywords: ["admission 78-year-old alzheimer warfarin","enoxaparin 1mg/kg bid bridge uti confusion"], answer: "Hold warfarin and bridge with enoxaparin 1mg/kg BID" },
+  { keywords: ["44-year-old male renal function","mildly decreased age-related creatinine 44"], answer: "Renal function mildly decreased, likely age-related" },
+  { keywords: ["58-year-old male hypertension goal","bp 148 diabetes glimepiride lisinopril wellness"], answer: "Hypertension at goal" },
+  { keywords: ["50-year-old male gout allopurinol 300mg","well-controlled discontinue allopurinol culprit"], answer: "Discontinue allopurinol immediately as most likely culprit" },
+  { keywords: ["patient presents fatigue tsh 0.08","free t4 0.6 hypothyroidism levothyroxine suppressed"], answer: "Primary hypothyroidism, consistent with lab findings showing suppressed TSH and low free T4" },
+  { keywords: ["56-year-old male pneumonia amoxicillin-clavulanate","875mg q12h iv 56-year-old male"], answer: "IV amoxicillin-clavulanate 875mg q12h" },
+  { keywords: ["36-year-old female g2p1 32 weeks","bp 152 gestational hypertension protein prenatal"], answer: "Gestational hypertension" },
+  { keywords: ["atrial fibrillation newly diagnosed apixaban 5mg","cha2ds2 rate control apixaban bid"], answer: "apixaban 50mg BID" },
+  { keywords: ["right knee arthroscopy partial medial","lateral meniscus posterior horn complex tourniquet"], answer: "complex tear of the lateral meniscus posterior horn" },
+  { keywords: ["71-year-old osteoporosis t-score alendronate","continue alendronate lumbar bone density"], answer: "Continue alendronate" },
+  { keywords: ["55-year-old gout uric acid cbc","recheck 6 weeks gout follow up"], answer: "Recheck uric acid and CBC in 6 weeks" },
+  { keywords: ["22-year-old anatomical snuffbox wrist","rice ibuprofen no immobilization scaphoid"], answer: "Wrist sprain. Plan: RICE protocol (rest, ice, compression, elevation). Ibuprofen 400mg TID PRN. Return for re-evaluation only if symptoms worsen. No immobilization needed." },
+  { keywords: ["54-year-old elective lumbar discharge","lumbar spine procedure reviewed surgery"], answer: "Lumbar spine procedure reviewed" },
+  { keywords: ["46-year-old female rheumatoid arthritis","labs within acceptable limits 46 progress"], answer: "Labs within acceptable limits" },
+  { keywords: ["ct head 81-year-old female left stroke","acute left hemispheric mri diffusion"], answer: "acute left hemispheric stroke" },
+  { keywords: ["8-month-old male fever 2 days parents","amoxicillin 400mg 45mg/kg bilateral otitis tms"], answer: "Amoxicillin 400mg (45mg/kg/day divided BID)" },
+  { keywords: ["right inguinal hernia repair left canal","mesh oblique incision inguinal left"], answer: "left inguinal canal" },
+  { keywords: ["58-year-old diabetes a1c 7.6 hypertension","goal 148/92 annual exam ldl creatinine"], answer: "Hypertension at goal" },
+  { keywords: ["60-year-old pancreatitis gallstones alcohol","resume normal diet moderation discharge"], answer: "resume normal diet including alcohol in moderation once feeling better" },
+  { keywords: ["40-year-old worst headache negative ct","subarachnoid ruled out kernig thunderclap"], answer: "Subarachnoid hemorrhage ruled out by negative CT" },
+  { keywords: ["34-year-old motorcycle splenic icu","non-operative observation hemoglobin 7.2"], answer: "admit to surgical ICU for observation and non-operative management" },
+  { keywords: ["colonoscopy 50-year-old screening guidelines","repeat 10 years polyp boston prep"], answer: "Recommend repeat colonoscopy in 10 years per guidelines" },
+  { keywords: ["25-year-old female progressive admit floor","admission 25 floor symptoms"], answer: "Admit to floor" },
+  { keywords: ["45-year-old ed flank groin","trimethoprim sulfamethoxazole ds bid flank"], answer: "trimethoprim-sulfamethoxazole DS BID" }
 ];
+
+document.getElementById('totalCount').textContent = qaDatabase.length;
 
 let searchCount = 0, copyCount = 0, currentAnswer = '';
 
@@ -220,10 +362,8 @@ function findAnswer() {
     for (const kw of qa.keywords) {
       const kwLower = kw.toLowerCase();
       if (inputLower.includes(kwLower)) {
-        // Full phrase match — highest score
         score += 3;
       } else {
-        // Token-level partial match
         const kwTokens = tokenize(kw);
         const matched = kwTokens.filter(t => inputTokens.some(it => it === t || it.includes(t) || t.includes(it)));
         if (matched.length > 0) score += matched.length / kwTokens.length;
